@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="iPojoBuilder"
+         name="iPojo Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="fr.imag.adele.cadse.builder.iPojo.iPojoBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="iPojoNature"
+         name="iPojo Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="fr.imag.adele.cadse.builder.iPojo.iPojoNature">
+         </run>
+      </runtime>
+      <builder
+            id="fr.imag.adele.cadse.builder.iPojoBuilder">
+      </builder>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            id="fr.imag.adele.cadse.builder.contribution1">
+         <action
+               label="Add/Remove iPojo Nature"
+               class="fr.imag.adele.cadse.builder.iPojo.ToggleNatureAction"
+               menubarPath="additions"
+               enablesFor="+"
+               id="fr.imag.adele.cadse.builder.addRemoveNatureAction">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="fr.imag.adele.ipojo.problem"
+         name="iPojo Problem"
+         point="org.eclipse.core.resources.markers">
+      <persistent
+            value="true">
+      </persistent>
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+   </extension>
+
+</plugin>

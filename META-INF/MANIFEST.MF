@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Cadse Builder
+Bundle-SymbolicName: fr.imag.adele.cadse.builder; singleton:=true
+Bundle-Version: 2.2.1.qualifier
+Bundle-Activator: fr.imag.adele.cadse.builder.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core;bundle-version="3.5.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: fede.workspace.eclipse.java.osgi,
+ org.apache.felix.ipojo.manipulator;version="1.2.0",
+ org.apache.felix.ipojo.metadata;version="1.2.0",
+ org.eclipse.jface.action,
+ org.eclipse.jface.resource,
+ org.eclipse.jface.viewers,
+ org.eclipse.pde.core.build,
+ org.eclipse.pde.internal.core.build,
+ org.eclipse.ui,
+ org.eclipse.ui.plugin
