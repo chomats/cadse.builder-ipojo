@@ -3,7 +3,6 @@ package fr.imag.adele.cadse.builder.iPojo;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.felix.ipojo.manipulator.Pojoization;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -99,7 +98,7 @@ public class iPojoBuilder extends IncrementalProjectBuilder {
 
 	
 	
-	private static void showErrors(IProject p, Pojoization pojo) {
+	private static void showErrors(IProject p, EclipsePojoization pojo) {
 		for (Iterator iterator = pojo.getErrors().iterator(); iterator.hasNext();) {
 			String m = (String) iterator.next();
 		

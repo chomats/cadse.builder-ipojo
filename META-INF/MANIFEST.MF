@@ -9,8 +9,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.jdt.core;bundle-version="3.5.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: fede.workspace.eclipse.java.osgi,
- org.apache.felix.ipojo.manipulator;version="1.2.0",
+Import-Package: org.apache.felix.ipojo.manipulator;version="1.2.0",
  org.apache.felix.ipojo.metadata;version="1.2.0",
  org.eclipse.jface.action,
  org.eclipse.jface.resource,
