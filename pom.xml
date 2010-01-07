@@ -46,11 +46,6 @@
   		<version>3.4.100.v20090520-1800</version>
   	</dependency>
   	<dependency>
-  		<groupId>org.eclipse</groupId>
-  		<artifactId>org.eclipse.jdt.core</artifactId>
-  		<version>3.5.1.xx-20091214-2200-e35</version>
-  	</dependency>
-  	<dependency>
   		<groupId>org.apache.felix</groupId>
   		<artifactId>org.apache.felix.ipojo.manipulator</artifactId>
   		<version>1.4.2</version>
@@ -59,6 +54,13 @@
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.pde.core</artifactId>
   		<version>3.5.100.v20090821</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.eclipse</groupId>
+  		<artifactId>org.eclipse.jdt.core</artifactId>
+  		<version>[3.5.1,)</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
   	</dependency>
   </dependencies>
 </project>
