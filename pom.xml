@@ -2,65 +2,76 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.imag.adele.cadse</groupId>
   <artifactId>fr.imag.adele.cadse.builder</artifactId>
-  <packaging>eclipse-plugin</packaging>
+  <packaging>bundle</packaging>
   <version>2.3.0-SNAPSHOT</version>
+  <parent>
+  	<artifactId>fr.imag.adele.cadse.parent</artifactId>
+  	<groupId>fr.imag.adele.cadse</groupId>
+  	<version>2.3.0-SNAPSHOT</version>
+  	<relativePath>../fr.imag.adele.cadse.parent</relativePath>
+  </parent>
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>						
+						<Export-Package>fr.imag.adele.cadse.builder*</Export-Package>
+						<Include-Resource>
+						  build.properties=build.properties,
+			              plugin.xml=plugin.xml
+			            </Include-Resource>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
   <dependencies>
   <dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.jface</artifactId>
-  		<version>3.5.1.M20090826-0800</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.ui.workbench</artifactId>
-  		<version>3.5.1.M20090826-0800a</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.osgi</artifactId>
-  		<version>3.5.1.R35x_v20090827</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.core.runtime</artifactId>
-  		<version>3.5.0.v20090525</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.core.resources</artifactId>
-  		<version>3.5.1.R35x_v20090826-0451</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.equinox.common</artifactId>
-  		<version>3.5.1.R35x_v20090807-1100</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.core.jobs</artifactId>
-  		<version>3.4.100.v20090429-1800</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.equinox.registry</artifactId>
-  		<version>3.4.100.v20090520-1800</version>
   	</dependency>
   	<dependency>
   		<groupId>org.apache.felix</groupId>
   		<artifactId>org.apache.felix.ipojo.manipulator</artifactId>
-  		<version>1.4.2</version>
-  	</dependency>
+   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.pde.core</artifactId>
-  		<version>3.5.100.v20090821</version>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.jdt.core</artifactId>
-  		<version>[3.5.1,)</version>
-  		<type>jar</type>
-  		<scope>compile</scope>
   	</dependency>
   </dependencies>
 </project>
