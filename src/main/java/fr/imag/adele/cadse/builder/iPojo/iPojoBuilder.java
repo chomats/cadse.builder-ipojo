@@ -1,32 +1,20 @@
 package fr.imag.adele.cadse.builder.iPojo;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.felix.ipojo.manipulator.Pojoization;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.jdt.core.IClasspathEntry;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.JavaModelException;
-import org.eclipse.pde.core.build.IBuildEntry;
-import org.eclipse.pde.internal.core.build.WorkspaceBuildModel;
-import org.osgi.framework.BundleException;
 
 public class iPojoBuilder extends IncrementalProjectBuilder {
 
@@ -110,7 +98,7 @@ public class iPojoBuilder extends IncrementalProjectBuilder {
 
 	
 	
-	private static void showErrors(IProject p, Pojoization pojo) {
+	private static void showErrors(IProject p, EclipsePojoization pojo) {
 		for (Iterator iterator = pojo.getErrors().iterator(); iterator.hasNext();) {
 			String m = (String) iterator.next();
 		
