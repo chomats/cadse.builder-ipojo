@@ -24,6 +24,10 @@
 						  build.properties=build.properties,
 			              plugin.xml=plugin.xml
 			            </Include-Resource>
+			            <Private-Package>org.apache.felix.ipojo.manipulation,
+ org.apache.felix.ipojo.manipulation.annotations,
+ org.apache.felix.ipojo.manipulator,
+ org.apache.felix.ipojo.xml.parser</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
@@ -69,6 +73,12 @@
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.pde.core</artifactId>
+  		<exclusions>
+	  		<exclusion>
+	            <groupId>org.eclipse</groupId>
+	      		<artifactId>org.apache.felix.org.apache.felix.ipojo</artifactId>
+	        </exclusion>
+  		</exclusions>
   	</dependency>
   	<dependency>
   		<groupId>org.eclipse</groupId>
