@@ -11,13 +11,13 @@ Export-Package: fr.imag.adele.cadse.builder.iPojo;uses:="org.eclipse.c
 Private-Package: org.apache.felix.ipojo.manipulator,org.apache.felix.i
  pojo.xml.parser,org.apache.felix.ipojo.manipulation.annotations,.,org
  .apache.felix.ipojo.manipulation
-Built-By: chomats
+Built-By: etienne
 Tool: Bnd-0.0.357
 Bundle-Name: fr.imag.adele.cadse.builder
 Created-By: Apache Maven Bundle Plugin
 Bundle-Vendor: Adele/LIG/ Grenoble University, France
-Build-Jdk: 1.6.0_17
-Bundle-Version: 2.3.0.SNAPSHOT
+Build-Jdk: 1.6.0_0
+Bundle-Version: 2.3.0.SNAPSHOT-201002121709
 Bundle-ManifestVersion: 2
 Import-Package: fr.imag.adele.cadse.builder;version="2.3",fr.imag.adel
  e.cadse.builder.iPojo;version="2.3",org.apache.felix.ipojo.metadata,o
