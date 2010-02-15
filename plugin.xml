@@ -9,7 +9,7 @@
       <builder
             hasNature="true">
          <run
-               class="fr.imag.adele.cadse.builder.iPojo.iPojoBuilder">
+               class="fr.imag.adele.cadse.builder.iPojo.IPojoBuilder">
          </run>
       </builder>
    </extension>
@@ -19,7 +19,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="fr.imag.adele.cadse.builder.iPojo.iPojoNature">
+               class="fr.imag.adele.cadse.builder.iPojo.IPojoNature">
          </run>
       </runtime>
       <builder
