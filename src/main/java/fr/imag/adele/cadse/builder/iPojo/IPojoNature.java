@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
 
-public class iPojoNature implements IProjectNature {
+public class IPojoNature implements IProjectNature {
 
 	/**
 	 * ID of this project nature
@@ -27,7 +27,7 @@ public class iPojoNature implements IProjectNature {
 		ICommand[] commands = desc.getBuildSpec();
 
 		for (int i = 0; i < commands.length; ++i) {
-			if (commands[i].getBuilderName().equals(iPojoBuilder.BUILDER_ID)) {
+			if (commands[i].getBuilderName().equals(IPojoBuilder.BUILDER_ID)) {
 				return;
 			}
 		}
@@ -35,7 +35,7 @@ public class iPojoNature implements IProjectNature {
 		ICommand[] newCommands = new ICommand[commands.length + 1];
 		System.arraycopy(commands, 0, newCommands, 0, commands.length);
 		ICommand command = desc.newCommand();
-		command.setBuilderName(iPojoBuilder.BUILDER_ID);
+		command.setBuilderName(IPojoBuilder.BUILDER_ID);
 		newCommands[newCommands.length - 1] = command;
 		desc.setBuildSpec(newCommands);
 		project.setDescription(desc, null);
@@ -50,7 +50,7 @@ public class iPojoNature implements IProjectNature {
 		IProjectDescription description = getProject().getDescription();
 		ICommand[] commands = description.getBuildSpec();
 		for (int i = 0; i < commands.length; ++i) {
-			if (commands[i].getBuilderName().equals(iPojoBuilder.BUILDER_ID)) {
+			if (commands[i].getBuilderName().equals(IPojoBuilder.BUILDER_ID)) {
 				ICommand[] newCommands = new ICommand[commands.length - 1];
 				System.arraycopy(commands, 0, newCommands, 0, i);
 				System.arraycopy(commands, i + 1, newCommands, i,

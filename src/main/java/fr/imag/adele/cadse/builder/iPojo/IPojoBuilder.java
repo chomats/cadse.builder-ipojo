@@ -16,7 +16,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 
-public class iPojoBuilder extends IncrementalProjectBuilder {
+public class IPojoBuilder extends IncrementalProjectBuilder {
 
 	
 	protected static final String	IPOJO_CLASSES	= "ipojo-classes";
