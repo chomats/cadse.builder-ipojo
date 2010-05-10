@@ -20,6 +20,7 @@
 				<configuration>
 					<instructions>						
 						<Export-Package>fr.imag.adele.cadse.builder*;version="${version.cadse}"</Export-Package>
+						<Import-Package>org.eclipse.core.runtime;registry=!,org.eclipse.ui;ui.workbench=!,*</Import-Package>
 						<Include-Resource>
 						  build.properties=build.properties,
 			              plugin.xml=plugin.xml
