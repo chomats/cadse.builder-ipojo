@@ -456,40 +456,40 @@ class Pojoization {
      * @param inC the class to inspect.
      */
     private void computeAnnotations(byte[] inC) {
-        ClassReader cr = new ClassReader(inC);
-        MetadataCollector xml = new MetadataCollector();
-        cr.accept(xml, 0);
-        if (xml.isAnnotated()) {
-            boolean toskip = false;
-            for (int i = 0; !toskip && i < m_metadata.length; i++) {
-                if (! m_metadata[i].getName().equals("instance") // Only if its a component type definition, 
-                                                                 // so skip instance declaration 
-                        && m_metadata[i].containsAttribute("name")
-                        && m_metadata[i].getAttribute("name").equalsIgnoreCase(xml.getElem().getAttribute("name"))) {
-                    toskip = true;
-                    warn("The component type " + xml.getElem().getAttribute("name") + " is overriden by the metadata file");
-                }
-            }
-            if (!toskip) {
-                // if no metadata or empty one, create a new array.
-                if (m_metadata != null && m_metadata.length > 0) {
-                    Element[] newElementsList = new Element[m_metadata.length + 1];
-                    System.arraycopy(m_metadata, 0, newElementsList, 0, m_metadata.length);
-                    newElementsList[m_metadata.length] = xml.getElem();
-                    m_metadata = newElementsList;
-                } else {
-                    m_metadata = new Element[] { xml.getElem() };
-                }
-                String name = m_metadata[m_metadata.length - 1].getAttribute("classname");
-                name = name.replace('.', '/');
-                name += ".class";
-
-                // Creates the ComponentInfo and store bytecode
-                ComponentInfo info = new ComponentInfo(name, m_metadata[m_metadata.length - 1]);
-                info.m_bytecode = inC;
-                m_components.add(info);
-            }
-        }
+//        ClassReader cr = new ClassReader(inC);
+//        MetadataCollector xml = new MetadataCollector();
+//        cr.accept(xml, 0);
+//        if (xml.isAnnotated()) {
+//            boolean toskip = false;
+//            for (int i = 0; !toskip && i < m_metadata.length; i++) {
+//                if (! m_metadata[i].getName().equals("instance") // Only if its a component type definition, 
+//                                                                 // so skip instance declaration 
+//                        && m_metadata[i].containsAttribute("name")
+//                        && m_metadata[i].getAttribute("name").equalsIgnoreCase(xml.getElem().getAttribute("name"))) {
+//                    toskip = true;
+//                    warn("The component type " + xml.getElem().getAttribute("name") + " is overriden by the metadata file");
+//                }
+//            }
+//            if (!toskip) {
+//                // if no metadata or empty one, create a new array.
+//                if (m_metadata != null && m_metadata.length > 0) {
+//                    Element[] newElementsList = new Element[m_metadata.length + 1];
+//                    System.arraycopy(m_metadata, 0, newElementsList, 0, m_metadata.length);
+//                    newElementsList[m_metadata.length] = xml.getElem();
+//                    m_metadata = newElementsList;
+//                } else {
+//                    m_metadata = new Element[] { xml.getElem() };
+//                }
+//                String name = m_metadata[m_metadata.length - 1].getAttribute("classname");
+//                name = name.replace('.', '/');
+//                name += ".class";
+//
+//                // Creates the ComponentInfo and store bytecode
+//                ComponentInfo info = new ComponentInfo(name, m_metadata[m_metadata.length - 1]);
+//                info.m_bytecode = inC;
+//                m_components.add(info);
+//            }
+//        }
     }
 
     /**
