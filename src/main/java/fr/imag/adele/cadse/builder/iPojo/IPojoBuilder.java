@@ -290,10 +290,12 @@ class Pojoization {
      */
     private void computeAnnotations(String nameClass, byte[] inC) throws CoreException {
         ClassReader cr;
+        //MODIFICATION DE POZIFICATION : bug exception
 		try {
 			cr = new ClassReader(inC);
 		} catch (ArrayIndexOutOfBoundsException e) {
-			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot read class "+nameClass, e));
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot read class "+nameClass, e));
+			return;
 		}
         MetadataCollector xml = new MetadataCollector();
         cr.accept(xml, 0);
