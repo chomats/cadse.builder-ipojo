@@ -765,6 +765,13 @@ class Pojoization {
         } catch (IOException e) {
             error("Cannot manipulate the class " + ci.m_classname + " : " + e.getMessage());
             return null;
+        } catch( ArrayIndexOutOfBoundsException e){
+        	Activator.getDefault().getLog().log(
+        			new Status(IStatus.ERROR,
+        					Activator.PLUGIN_ID, 
+        					"Cannot read class "+ci.m_classname, e));
+			
+        	return null;
         }
     }
 
@@ -1197,23 +1204,23 @@ public class IPojoBuilder extends IncrementalProjectBuilder {
 				metadataFile = null;
 			}
 		}
-		IContainer outClasses = (IContainer) ResourcesPlugin.getWorkspace().getRoot().findMember(jp.getOutputLocation());
-		Pojoization p = new Pojoization();
-		MarkerIpojoProblem.unmark(getProject());
-		
-		
 		try {
+			IContainer outClasses = (IContainer) ResourcesPlugin.getWorkspace().getRoot().findMember(jp.getOutputLocation());
+			Pojoization p = new Pojoization();
+			MarkerIpojoProblem.unmark(getProject());
+		
+		
 			p.directoryPojoization(outClasses.getLocation().toFile(), 
 					metadataFile == null ? null : metadataFile.getLocation().toFile(), manifestFile.getLocation().toFile());
+		
+			
+			showErrors(getProject(), p);
+			
+			getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
+		
 		} catch (Throwable e) {
 			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(),e));
 		}
-		
-		showErrors(getProject(), p);
-		
-		getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
-		
-		
 		return new IProject[0];
 	}
 
