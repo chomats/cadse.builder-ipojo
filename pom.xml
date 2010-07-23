@@ -21,14 +21,12 @@
 					<instructions>						
 						<Export-Package>fr.imag.adele.cadse.builder*;version="${version.cadse}"</Export-Package>
 						<Import-Package>org.eclipse.core.runtime;registry=!,org.eclipse.ui;ui.workbench=!,*</Import-Package>
+						<Embed-Dependency>org.apache.felix.ipojo.manipulator</Embed-Dependency>
 						<Include-Resource>
+						  {maven-resources}, {maven-dependencies},
 						  build.properties=build.properties,
 			              plugin.xml=plugin.xml
 			            </Include-Resource>
-			            <Private-Package>org.apache.felix.ipojo.manipulation,
- org.apache.felix.ipojo.manipulation.annotations,
- org.apache.felix.ipojo.manipulator,
- org.apache.felix.ipojo.xml.parser</Private-Package>
  						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Bundle-Activator>fr.imag.adele.cadse.builder.Activator</Bundle-Activator>
 					</instructions>
