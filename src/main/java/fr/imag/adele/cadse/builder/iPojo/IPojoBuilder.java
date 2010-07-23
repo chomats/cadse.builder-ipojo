@@ -13,9 +13,13 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+
+import fr.imag.adele.cadse.builder.Activator;
 
 public class IPojoBuilder extends IncrementalProjectBuilder {
 
@@ -65,8 +69,12 @@ public class IPojoBuilder extends IncrementalProjectBuilder {
 		MarkerIpojoProblem.unmark(getProject());
 		
 		
-		p.directoryPojoization(outClasses.getLocation().toFile(), 
-				metadataFile == null ? null : metadataFile.getLocation().toFile(), manifestFile.getLocation().toFile());
+		try {
+			p.directoryPojoization(outClasses.getLocation().toFile(), 
+					metadataFile == null ? null : metadataFile.getLocation().toFile(), manifestFile.getLocation().toFile());
+		} catch (Throwable e) {
+			Activator.getDefault().getLog().log(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage(),e));
+		}
 		
 		showErrors(getProject(), p);
 		
