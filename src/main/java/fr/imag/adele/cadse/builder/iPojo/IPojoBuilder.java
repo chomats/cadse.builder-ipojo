@@ -519,7 +519,7 @@ class Pojoization {
             m_classes.put(info.m_classname, outClazz);
 
             // Are there any inner classes to be manipulated ?
-            if (!info.m_inners.isEmpty()) {
+            if (info.m_inners!= null && !info.m_inners.isEmpty()) {
                 for (int k = 0; k < info.m_inners.size(); k++) {
                     String innerCN = (String) info.m_inners.get(k) + ".class";
                     try {
