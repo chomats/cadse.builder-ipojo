@@ -29,6 +29,8 @@
  org.apache.felix.ipojo.manipulation.annotations,
  org.apache.felix.ipojo.manipulator,
  org.apache.felix.ipojo.xml.parser</Private-Package>
+ 						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
+						<Bundle-Activator>fr.imag.adele.cadse.builder.Activator</Bundle-Activator>
 					</instructions>
 				</configuration>
 			</plugin>
