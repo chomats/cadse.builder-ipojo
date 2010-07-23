@@ -3,6 +3,7 @@ package fr.imag.adele.cadse.builder.iPojo;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.felix.ipojo.manipulator.Pojoization;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -56,39 +57,18 @@ public class IPojoBuilder extends IncrementalProjectBuilder {
 						"sources/main/resources/metadata.xml"));
 			}
 			if (!metadataFile.exists()) {
-				return new IProject[0];
+				metadataFile = null;
 			}
 		}
 		IContainer outClasses = (IContainer) ResourcesPlugin.getWorkspace().getRoot().findMember(jp.getOutputLocation());
-		// this code to resolve problem with manifest add ipojo
-//		if (kind != FULL_BUILD) {
-//			IResourceDelta delta = getDelta(getProject());
-//			if (delta != null) {
-//				if (delta.findMember(metadataFile.getProjectRelativePath())!= null) {
-//					EclipsePojoization p = new EclipsePojoization();
-//					p.begin(metadataFile, monitor);
-//					for (String cn : p.getComponentsClasses()) {
-//						IResource classR = outClasses.findMember(new Path(cn.replace('.', '/')+".class"));
-//						if (classR != null && classR.exists()) {
-//							classR.delete(true, monitor);
-//						}
-//					}
-//					return new IProject[0];
-//				}
-//			}
-//		}
-		EclipsePojoization p = new EclipsePojoization();
+		Pojoization p = new Pojoization();
 		MarkerIpojoProblem.unmark(getProject());
 		
 		
+		p.directoryPojoization(outClasses.getLocation().toFile(), 
+				metadataFile == null ? null : metadataFile.getLocation().toFile(), manifestFile.getLocation().toFile());
 		
-		p.setOutClasses(outClasses);
-		p.begin(metadataFile, monitor);
-		p.manipulate();
-		p.writeClasses(monitor);
-		
-		showErrors(getProject(), p);	
-		p.finish(manifestFile);
+		showErrors(getProject(), p);
 		
 		getProject().refreshLocal(IResource.DEPTH_INFINITE, monitor);
 		
@@ -98,7 +78,7 @@ public class IPojoBuilder extends IncrementalProjectBuilder {
 
 	
 	
-	private static void showErrors(IProject p, EclipsePojoization pojo) {
+	private static void showErrors(IProject p, Pojoization pojo) {
 		for (Iterator iterator = pojo.getErrors().iterator(); iterator.hasNext();) {
 			String m = (String) iterator.next();
 		
