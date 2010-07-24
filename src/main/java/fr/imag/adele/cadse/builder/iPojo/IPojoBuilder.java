@@ -438,6 +438,7 @@ class Pojoization {
             Map.Entry entry = (Map.Entry) it.next();
             String classname = (String) entry.getKey();
             byte[] clazz = (byte[]) entry.getValue();
+            if (clazz == null) continue;
             // The class name is already a path
             File classFile = new File(m_dir, classname);
             try {
