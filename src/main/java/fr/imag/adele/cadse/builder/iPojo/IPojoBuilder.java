@@ -291,6 +291,7 @@ class Pojoization {
     private void computeAnnotations(String nameClass, byte[] inC) throws CoreException {
         ClassReader cr;
         //MODIFICATION DE POZIFICATION : bug exception
+        
 		try {
 			cr = new ClassReader(inC);
 		} catch (ArrayIndexOutOfBoundsException e) {
@@ -489,13 +490,13 @@ class Pojoization {
 
                     // Need to load the bytecode for each .class entry
                     byte[] in = getBytecode(curName);
-
+                    
                     // This method adds the class to the component list
                     // if that bytecode is annotated with @Component.
                     computeAnnotations(curName, in);
                 } catch (IOException e) {
                     error("Cannot read the class : " + curName);
-                    return;
+                    continue;
                 }
             }
         }
@@ -568,6 +569,8 @@ class Pojoization {
                 }
             }
         }
+        if (in.length == 0)
+        	throw new IOException("Empty class");
 
         return in;
     }
