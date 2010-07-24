@@ -29,7 +29,8 @@
 			              plugin.xml=plugin.xml,
 			              META-INF/LICENSE=META-INF/LICENSE,
 			              META-INF/LICENSE.asm=META-INF/LICENSE.asm,
-			              META-INF/NOTICE=META-INF/NOTICE
+			              META-INF/NOTICE=META-INF/NOTICE,
+			              META-INF/LICENSE.ipojo=META-INF/LICENSE.ipojo
 			            </Include-Resource>
  						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Bundle-Activator>fr.imag.adele.cadse.builder.Activator</Bundle-Activator>
