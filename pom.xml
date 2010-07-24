@@ -21,14 +21,18 @@
 					<instructions>						
 						<Export-Package>fr.imag.adele.cadse.builder*;version="${version.cadse}"</Export-Package>
 						<Import-Package>org.eclipse.core.runtime;registry=!,org.eclipse.ui;ui.workbench=!,*</Import-Package>
-						<Embed-Dependency>org.apache.felix.ipojo.manipulator</Embed-Dependency>
+						<Private-Package>org.apache.felix.ipojo.*,org.objectweb.asm*</Private-Package>
 						<Include-Resource>
 						  {maven-resources}, {maven-dependencies},
 						  build.properties=build.properties,
-			              plugin.xml=plugin.xml
+			              plugin.xml=plugin.xml,
+			              META-INF/LICENSE=META-INF/LICENSE,
+			              META-INF/LICENSE.asm=META-INF/LICENSE.asm,
+			              META-INF/NOTICE=META-INF/NOTICE
 			            </Include-Resource>
  						<Bundle-ActivationPolicy>lazy</Bundle-ActivationPolicy>
 						<Bundle-Activator>fr.imag.adele.cadse.builder.Activator</Bundle-Activator>
+						
 					</instructions>
 				</configuration>
 			</plugin>
@@ -68,10 +72,6 @@
   		<artifactId>org.eclipse.equinox.registry</artifactId>
   	</dependency>
   	<dependency>
-  		<groupId>org.apache.felix</groupId>
-  		<artifactId>org.apache.felix.ipojo.manipulator</artifactId>
-   	</dependency>
-  	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.pde.core</artifactId>
   		<exclusions>
@@ -84,6 +84,12 @@
   	<dependency>
   		<groupId>org.eclipse</groupId>
   		<artifactId>org.eclipse.jdt.core</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.felix</groupId>
+  		<artifactId>org.apache.felix.ipojo.metadata</artifactId>
+  		<version>1.4.0</version>
+  		<scope>compile</scope>
   	</dependency>
   </dependencies>
 </project>
