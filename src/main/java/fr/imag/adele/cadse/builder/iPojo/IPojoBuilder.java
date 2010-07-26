@@ -60,6 +60,7 @@ import fr.imag.adele.cadse.builder.Activator;
 
 class Pojoization {
 
+	
     /**
      * iPOJO Imported Package Version.
      */
@@ -88,12 +89,12 @@ class Pojoization {
     /**
      * Class map (class name, byte[]).
      */
-    private Map m_classes = new HashMap();
+    protected Map m_classes = new HashMap();
 
     /**
      * Referenced packages by the composite.
      */
-    private List m_referredPackages;
+    protected List m_referredPackages;
 
     /**
      * Flag describing if we need or not compute annotations.
@@ -116,18 +117,18 @@ class Pojoization {
     /**
      * The manipulated directory.
      */
-    private File m_dir;
+    protected File m_dir;
 
     /**
      * The manifest location.
      */
-    private File m_manifest;
+    protected File m_manifest;
 
     /**
      * Add an error in the error list.
      * @param mes : error message.
      */
-    private void error(String mes) {
+    protected void error(String mes) {
         System.err.println(mes);
         m_errors.add(mes);
     }
@@ -424,7 +425,7 @@ class Pojoization {
      * Manipulate the input directory.
      * @throws CoreException 
      */
-    private void manipulateDirectory() throws CoreException {
+    protected void manipulateDirectory() throws CoreException {
         manipulateComponents(); // Manipulate classes
         m_referredPackages = getReferredPackages();
         Manifest mf = doManifest(); // Compute the manifest
@@ -477,7 +478,7 @@ class Pojoization {
      * Manipulate classes of the input Jar.
      * @throws CoreException 
      */
-    private void manipulateComponents() throws CoreException {
+    protected void manipulateComponents() throws CoreException {
 
         // 1. Discover components described with annotations
         // Only do this if annotations are enabled
@@ -543,9 +544,9 @@ class Pojoization {
      * @return a byte array
      * @throws IOException if the classname cannot be read
      */
-    private byte[] getBytecode(final String classname) throws IOException {
+    protected byte[] getBytecode(final String classname) throws IOException {
 
-        InputStream currIn = null;
+    	InputStream currIn = null;
         byte[] in = new byte[0];
         try {
             // Get the stream to read
@@ -573,6 +574,7 @@ class Pojoization {
         	throw new IOException("Empty class");
 
         return in;
+         
     }
 
     /**
@@ -733,7 +735,7 @@ class Pojoization {
      * Set the bundle imports and iPOJO-components clauses
      * @return the generated manifest.
      */
-    private Manifest doManifest() {
+    protected Manifest doManifest() {
         Manifest mf = null;
         try {
             mf = getManifest();
@@ -1107,7 +1109,7 @@ class Pojoization {
      * Get packages referenced by component.
      * @return the list of referenced packages.
      */
-    private List getReferredPackages() {
+    protected List getReferredPackages() {
         List referred = new ArrayList();
         for (int i = 0; i < m_metadata.size(); i++) {
             Element[] elems = ((Element) m_metadata.get(i)).getElements();
@@ -1210,7 +1212,9 @@ public class IPojoBuilder extends IncrementalProjectBuilder {
 		}
 		try {
 			IContainer outClasses = (IContainer) ResourcesPlugin.getWorkspace().getRoot().findMember(jp.getOutputLocation());
-			Pojoization p = new Pojoization();
+			EclipsePojoization p = new EclipsePojoization();
+			p.setOutClasses(outClasses);
+			p.monitor = monitor;
 			MarkerIpojoProblem.unmark(getProject());
 		
 		
