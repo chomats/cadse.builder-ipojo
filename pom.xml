@@ -4,11 +4,11 @@
   <artifactId>fr.imag.adele.cadse.builder</artifactId>
   <packaging>bundle</packaging>
   <name>fr.imag.adele.cadse.builder</name>
-  <version>2.3.0-SNAPSHOT</version>
+  <version>2.3.0</version>
   <parent>
   	<artifactId>fr.imag.adele.cadse.parent.osgi</artifactId>
   	<groupId>fr.imag.adele.cadse</groupId>
-  	<version>2.3.0-SNAPSHOT</version>
+  	<version>2.3.2</version>
   	<relativePath>../fr.imag.adele.cadse.parent.osgi</relativePath>
   </parent>
   <build>
