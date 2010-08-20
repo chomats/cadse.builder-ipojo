@@ -8,8 +8,7 @@
   <parent>
   	<artifactId>fr.imag.adele.cadse.parent.osgi</artifactId>
   	<groupId>fr.imag.adele.cadse</groupId>
-  	<version>2.3.3-SNAPSHOT</version>
-  	<relativePath>../fr.imag.adele.cadse.parent.osgi</relativePath>
+  	<version>2.3.2</version>
   </parent>
   <build>
 		<plugins>
