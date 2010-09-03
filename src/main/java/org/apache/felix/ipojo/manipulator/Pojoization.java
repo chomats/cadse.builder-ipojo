@@ -92,12 +92,12 @@ public class Pojoization {
     /**
      * Class map (class name, byte[]).
      */
-    private Map m_classes = new HashMap();
+    protected Map m_classes = new HashMap();
 
     /**
      * Referenced packages by the composite.
      */
-    private List m_referredPackages;
+    protected List m_referredPackages;
 
     /**
      * Flag describing if we need or not compute annotations.
@@ -120,18 +120,18 @@ public class Pojoization {
     /**
      * The manipulated directory.
      */
-    private File m_dir;
+    protected File m_dir;
 
     /**
      * The manifest location.
      */
-    private File m_manifest;
+    protected File m_manifest;
 
     /**
      * Add an error in the error list.
      * @param mes : error message.
      */
-    private void error(String mes) {
+    protected void error(String mes) {
         System.err.println(mes);
         m_errors.add(mes);
     }
@@ -288,7 +288,7 @@ public class Pojoization {
      * Parse the content of the class to detect annotated classes.
      * @param inC the class to inspect.
      */
-    private void computeAnnotations(byte[] inC) {
+    protected void computeAnnotations(byte[] inC) {
         ClassReader cr = new ClassReader(inC);
         MetadataCollector xml = new MetadataCollector();
         cr.accept(xml, 0);
@@ -331,7 +331,7 @@ public class Pojoization {
      * Manipulate the input bundle.
      * @param out final bundle
      */
-    private void manipulateJarFile(File out) {
+    protected void manipulateJarFile(File out) {
         manipulateComponents(); // Manipulate classes
         m_referredPackages = getReferredPackages();
         Manifest mf = doManifest(); // Compute the manifest
@@ -414,7 +414,7 @@ public class Pojoization {
     /**
      * Manipulate the input directory.
      */
-    private void manipulateDirectory() {
+    protected void manipulateDirectory() {
         manipulateComponents(); // Manipulate classes
         m_referredPackages = getReferredPackages();
         Manifest mf = doManifest(); // Compute the manifest
@@ -465,7 +465,7 @@ public class Pojoization {
     /**
      * Manipulate classes of the input Jar.
      */
-    private void manipulateComponents() {
+    protected void manipulateComponents() {
 
         // 1. Discover components described with annotations
         // Only do this if annotations are enabled
@@ -531,7 +531,7 @@ public class Pojoization {
      * @return a byte array
      * @throws IOException if the classname cannot be read
      */
-    private byte[] getBytecode(final String classname) throws IOException {
+    protected byte[] getBytecode(final String classname) throws IOException {
 
         InputStream currIn = null;
         byte[] in = new byte[0];
@@ -568,7 +568,7 @@ public class Pojoization {
      * @return the input stream
      * @throws IOException if the file cannot be read
      */
-    private InputStream getInputStream(String classname) throws IOException {
+    protected InputStream getInputStream(String classname) throws IOException {
         if (m_inputJar != null) {
             // Fix entry name if needed
             if (! classname.endsWith(".class")) {
@@ -719,7 +719,7 @@ public class Pojoization {
      * Set the bundle imports and iPOJO-components clauses
      * @return the generated manifest.
      */
-    private Manifest doManifest() {
+    protected Manifest doManifest() {
         Manifest mf = null;
         try {
             mf = getManifest();
@@ -1086,7 +1086,7 @@ public class Pojoization {
      * Get packages referenced by component.
      * @return the list of referenced packages.
      */
-    private List getReferredPackages() {
+    protected List getReferredPackages() {
         List referred = new ArrayList();
         for (int i = 0; i < m_metadata.size(); i++) {
             Element[] elems = ((Element) m_metadata.get(i)).getElements();
